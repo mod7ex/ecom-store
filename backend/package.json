@@ -1,0 +1,22 @@
+{
+      "name": "backend",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+            "dev": "NODE_ENV=development nodemon app.js",
+            "start": "NODE_ENV=production node app.js"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+            "dotenv": "^10.0.0",
+            "express": "^4.17.1",
+            "http-status-codes": "^2.1.4",
+            "mongoose": "^6.0.13"
+      },
+      "devDependencies": {
+            "nodemon": "^2.0.15"
+      }
+}
