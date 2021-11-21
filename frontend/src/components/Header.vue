@@ -1,16 +1,18 @@
 <template>
       <header>
-            <img src="@/assets/logo.png" height="70" />
-
             <div>
-                  <span>some stuff</span>
-            </div>
+                  <img src="@/assets/avatr.png" />
 
-            <ul>
-                  <li><a href="#">Account</a></li>
-                  <li><a href="#">Help</a></li>
-                  <li><a href="#">Cart</a></li>
-            </ul>
+                  <form>
+                        <input type="search" name="" id="" />
+                  </form>
+
+                  <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Cart</a></li>
+                  </ul>
+            </div>
       </header>
 </template>
 
@@ -18,4 +20,14 @@
 export default {};
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+@import "@/assets/style/_mixins.scss";
+header {
+      div {
+            // @include flex(row, space-between, center);
+      }
+      img {
+            height: 70px;
+      }
+}
+</style>
