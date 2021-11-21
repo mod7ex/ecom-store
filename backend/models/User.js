@@ -14,8 +14,7 @@ let userSchema = new mongoose.Schema({
       },
 
       address: {
-            type: String,
-            required: [true, "Address is required"],
+            type: Object,
             maxLength: 256,
       },
 
