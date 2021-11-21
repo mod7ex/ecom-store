@@ -1,9 +1,8 @@
 <template>
+      <!-- For ads ... -->
       <div id="topbanner">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde
-            quisquam, architecto accusantium sint et totam cumque fugit
-            voluptatum ullam autem ad debitis deserunt magnam nisi natus quo,
-            repellat, esse soluta!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+            placeat perferendis sequi vero!
       </div>
 </template>
 
@@ -15,8 +14,6 @@ export default {
 
 <style lang="scss">
 #topbanner {
-      background-color: black;
-      color: white;
-      min-height: 60px;
+      min-height: 40px;
 }
 </style>
