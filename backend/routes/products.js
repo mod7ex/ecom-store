@@ -10,7 +10,7 @@ const {
 
 let productsRouter = express.Router();
 
-productsRouter.route("/search").get(getSearchedProducts);
+productsRouter.get("/search", getSearchedProducts);
 productsRouter.route("/").get(getAllProducts).post(createProduct);
 productsRouter
       .route("/:id")

@@ -3,11 +3,11 @@ let register = async (req, res, next) => {
 };
 
 let login = async (req, res, next) => {
-      res.send("create User");
+      res.send("login User");
 };
 
 let logout = async (req, res, next) => {
-      res.send("create User");
+      res.send("logout User");
 };
 
 module.exports = {

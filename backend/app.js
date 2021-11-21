@@ -8,6 +8,8 @@ const resetDB = require("./db/reset");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const notFoundMiddleware = require("./middleware/not-found");
 
+const { authRouter, usersRouter, productsRouter } = require("./routes");
+
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -15,11 +17,12 @@ const port = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use("/api/v1/auth");
-app.use("/api/v1/products");
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/products", productsRouter);
 
-app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 let start = async () => {
       try {
