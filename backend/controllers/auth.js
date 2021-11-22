@@ -32,7 +32,7 @@ let login = async (req, res, next) => {
 };
 
 let logout = async (req, res, next) => {
-      res.send("logout User");
+      res.json(req.user);
 };
 
 module.exports = {

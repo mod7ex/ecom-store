@@ -65,8 +65,17 @@ userSchema.methods.tokenize = function () {
       );
 };
 
-userSchema.methods.checkPassword = async function (password) {
-      let isValid = await bcryptjs.compare(password, this.password);
+// Virtual fields
+userSchema.virtual("front_user").get(function () {
+      return {
+            _id: this._id,
+            name: this.name,
+            email: this.email,
+      };
+});
+
+userSchema.methods.checkPassword = async function (passwd) {
+      let isValid = await bcryptjs.compare(passwd, this.password);
       return isValid;
 };
 

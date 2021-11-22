@@ -7,6 +7,7 @@ const resetDB = require("./db/reset");
 
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const notFoundMiddleware = require("./middleware/not-found");
+const authenticate = require("./middleware/authenticate");
 
 const { authRouter, usersRouter, productsRouter } = require("./routes");
 
@@ -18,8 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/users", usersRouter);
-app.use("/api/v1/products", productsRouter);
+app.use("/api/v1/users", authenticate, usersRouter);
+app.use("/api/v1/products", authenticate, productsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
