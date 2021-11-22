@@ -4,3 +4,9 @@
       justify-content: $justify;
       align-items: $align;
 }
+
+@mixin shape-setup($color: $black-gray, $shadow: 1px) {
+      border-radius: 3px;
+      border: none;
+      box-shadow: $shadow $shadow 11px 0 rgba($color, 0.3);
+}

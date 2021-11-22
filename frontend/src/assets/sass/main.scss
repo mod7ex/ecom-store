@@ -1,0 +1,23 @@
+.input-field {
+      margin: 0 $x-padding !important;
+      padding: $y-padding $x-padding !important;
+      @include shape-setup();
+      border: 1px solid rgba($black-gray, 0.5);
+      &:focus {
+            outline: none;
+            border: 1px solid rgba($black-gray, 0.7);
+      }
+}
+
+.btn {
+      cursor: pointer;
+      background-color: $brand-color;
+      color: $white;
+      padding: $y-padding !important;
+      @include shape-setup();
+}
+
+.center {
+      max-width: $screen;
+      margin: auto !important;
+}

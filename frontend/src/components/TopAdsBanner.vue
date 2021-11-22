@@ -1,5 +1,4 @@
 <template>
-      <!-- For ads ... -->
       <div id="topbanner">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
             placeat perferendis sequi vero!
@@ -8,12 +7,14 @@
 
 <script>
 export default {
-      name: "TopBanner",
+      name: "TopAdsBanner",
 };
 </script>
 
 <style lang="scss">
 #topbanner {
-      min-height: 40px;
+      min-height: $first-height * 3;
+      background-color: $black-gray;
+      color: $white;
 }
 </style>
