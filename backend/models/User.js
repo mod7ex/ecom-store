@@ -51,16 +51,19 @@ userSchema.pre("save", async function () {
       this.password = await bcryptjs.hash(this.password, salt);
 });
 
-userSchema.methods.tokenize = function () {
+userSchema.methods.tokenize = function (
+      expin = process.env.JWT_LIFE_TIME,
+      jwtSecret = process.env.JWT_SECRET
+) {
       return jwt.sign(
             {
                   _id: this._id,
                   name: this.name,
                   email: this.email,
             },
-            process.env.JWT_SECRET,
+            jwtSecret,
             {
-                  expiresIn: process.env.JWT_LIFE_TIME,
+                  expiresIn: expin,
             }
       );
 };

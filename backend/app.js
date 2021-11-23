@@ -1,6 +1,7 @@
 require("dotenv").config();
 require("express-async-errors");
 const express = require("express");
+require("./helpers/init_redis");
 
 const connectDB = require("./db/connect");
 const resetDB = require("./db/reset");
