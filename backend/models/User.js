@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const { BadRequestError } = require("../errors");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const redisClient = require("../helpers/init_redis");
 
 let userSchema = new mongoose.Schema({
       name: {
@@ -51,11 +52,11 @@ userSchema.pre("save", async function () {
       this.password = await bcryptjs.hash(this.password, salt);
 });
 
-userSchema.methods.tokenize = function (
+userSchema.methods.refreshToken = function (
       expin = process.env.JWT_LIFE_TIME,
       jwtSecret = process.env.JWT_SECRET
 ) {
-      return jwt.sign(
+      let token = jwt.sign(
             {
                   _id: this._id,
                   name: this.name,
@@ -66,6 +67,14 @@ userSchema.methods.tokenize = function (
                   expiresIn: expin,
             }
       );
+
+      redisClient.setex(this._id.toString(), 1000, token);
+
+      return token;
+};
+
+userSchema.methods.killJWTToken = function () {
+      redisClient.del(this._id.toString());
 };
 
 // Virtual fields

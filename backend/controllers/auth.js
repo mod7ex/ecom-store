@@ -4,7 +4,7 @@ const { BadRequestError, UnauthorizedError } = require("../errors");
 
 let register = async (req, res, next) => {
       let user = await User.create(req.body);
-      let token = user.tokenize();
+      let token = user.refreshToken();
       res.status(StatusCodes.CREATED).json({ user, token });
 };
 
@@ -27,12 +27,16 @@ let login = async (req, res, next) => {
             throw new UnauthorizedError("Incorrect data");
       }
 
-      let token = user.tokenize();
+      let token = user.refreshToken();
       res.status(StatusCodes.OK).json({ user, token });
 };
 
 let logout = async (req, res, next) => {
-      res.end();
+      let user = req.user;
+
+      user.killJWTToken();
+
+      res.status(StatusCodes.OK).json({ message: "Logged Out" });
 };
 
 module.exports = {
