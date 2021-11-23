@@ -1,6 +1,5 @@
 .input-field {
-      margin: 0 $x-padding !important;
-      padding: $y-padding $x-padding !important;
+      padding: $y-padding * 2 $x-padding !important;
       @include shape-setup();
       border: 1px solid rgba($black-gray, 0.5);
       &:focus {
@@ -9,12 +8,15 @@
       }
 }
 
-.btn {
+.btn,
+button,
+input[type="submit"] {
       cursor: pointer;
       background-color: $brand-color;
       color: $white;
-      padding: $y-padding !important;
+      padding: $y-padding * 2 $x-padding * 5 !important;
       @include shape-setup();
+      font-weight: bold;
 }
 
 .center {

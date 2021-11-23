@@ -1,9 +1,9 @@
 <template>
-      <div>Search page</div>
+      <div>Log out page</div>
 </template>
 
 <script>
 export default {
-      name: "Search",
+      name: "Logout",
 };
 </script>

@@ -1,7 +1,6 @@
 <template>
       <div id="topbanner">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-            placeat perferendis sequi vero!
+            <img src="@/assets/ads.gif" alt="" />
       </div>
 </template>
 
@@ -13,8 +12,12 @@ export default {
 
 <style lang="scss">
 #topbanner {
+      @include flex();
+      img {
+            @extend .center;
+      }
       min-height: $first-height * 3;
-      background-color: $black-gray;
+      background-color: black;
       color: $white;
 }
 </style>

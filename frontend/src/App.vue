@@ -1,6 +1,9 @@
 <template>
       <TopAdsBanner />
       <Header />
+      <div id="content">
+            <router-view />
+      </div>
 </template>
 
 <script>
@@ -15,4 +18,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app {
+      min-height: 100vh;
+      background-color: rgba($white-gray, 0.3);
+      #content {
+            @extend .center;
+      }
+}
+</style>
