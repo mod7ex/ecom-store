@@ -1,11 +1,9 @@
 require("dotenv").config();
+const { promisify } = require("util");
 const { UnauthorizedError } = require("../errors");
 const jwt = require("jsonwebtoken");
 const { User } = require("../models");
 const redisClient = require("../helpers/init_redis");
-
-const { promisify } = require("util");
-const getAsync = promisify(redisClient.get).bind(redisClient);
 
 const authenticate = async (req, res, next) => {
       let authHeader = req.headers.authorization;
@@ -19,8 +17,9 @@ const authenticate = async (req, res, next) => {
       let payload = jwt.verify(token, process.env.JWT_SECRET);
 
       //
+      const getAsync = promisify(redisClient.get).bind(redisClient);
       let redisToken = await getAsync(payload._id);
-      if (!redisToken || redisToken != token) {
+      if (redisToken != token) {
             throw new UnauthorizedError("Not allowed");
       }
       //

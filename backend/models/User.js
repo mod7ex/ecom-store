@@ -68,7 +68,7 @@ userSchema.methods.refreshToken = function (
             }
       );
 
-      redisClient.setex(this._id.toString(), 1000, token);
+      redisClient.setex(this._id.toString(), 3600, token);
 
       return token;
 };
