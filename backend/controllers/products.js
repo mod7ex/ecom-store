@@ -1,21 +1,35 @@
+const { Product } = require("../models");
+const { StatusCodes } = require("http-status-codes");
+
 let getAllProducts = async (req, res, next) => {
-      res.send("all products");
+      let products = await Product.find({});
+      res.status(StatusCodes.OK).json(products);
 };
 
 let createProduct = async (req, res, next) => {
-      res.send("create product");
+      let product = await Product.create(req.body);
+      res.status(StatusCodes.CREATED).json(product);
 };
 
 let getProduct = async (req, res, next) => {
-      res.send("get single product");
+      let { id } = req.params;
+      let product = await Product.findById(id);
+      res.status(StatusCodes.OK).json(product);
 };
 
 let updateProduct = async (req, res, next) => {
-      res.send("update product");
+      let { id } = req.params;
+      let product = await Product.findByIdAndUpdate(id, req.body, {
+            new: true,
+            runValidators: true,
+      });
+      res.status(StatusCodes.OK).json(product);
 };
 
 let deleteProduct = async (req, res, next) => {
-      res.send("delete product");
+      let { id } = req.params;
+      let product = await Product.findByIdAndDelete(id);
+      res.status(StatusCodes.OK).json(product);
 };
 
 let getSearchedProducts = async (req, res, next) => {
