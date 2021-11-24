@@ -4,7 +4,6 @@ const express = require("express");
 require("./helpers/init_redis");
 
 const connectDB = require("./db/connect");
-const resetDB = require("./db/reset");
 
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const notFoundMiddleware = require("./middleware/not-found");
@@ -29,7 +28,6 @@ app.use(errorHandlerMiddleware);
 let start = async () => {
       try {
             await connectDB(process.env.MONGO_URI);
-            // if (process.env.NODE_ENV == "development") await resetDB();
 
             app.listen(port, () => {
                   console.log(
