@@ -15,6 +15,14 @@ const {
       deleteUser,
 } = require("./users");
 
+const {
+      getAllCategories,
+      createCategory,
+      getCategory,
+      updateCategory,
+      deleteCategory,
+} = require("./categories");
+
 const { register, login, logout } = require("./auth");
 
 module.exports = {
@@ -32,4 +40,9 @@ module.exports = {
       register,
       login,
       logout,
+      getAllCategories,
+      createCategory,
+      getCategory,
+      updateCategory,
+      deleteCategory,
 };

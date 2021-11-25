@@ -9,7 +9,12 @@ const errorHandlerMiddleware = require("./middleware/error-handler");
 const notFoundMiddleware = require("./middleware/not-found");
 const authenticate = require("./middleware/authenticate");
 
-const { authRouter, usersRouter, productsRouter } = require("./routes");
+const {
+      authRouter,
+      usersRouter,
+      productsRouter,
+      categoriesRouter,
+} = require("./routes");
 
 const app = express();
 
@@ -20,7 +25,8 @@ app.use(express.json());
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticate, usersRouter);
-app.use("/api/v1/products", authenticate, productsRouter);
+app.use("/api/v1/products", productsRouter);
+app.use("/api/v1/categories", categoriesRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

@@ -1,4 +1,5 @@
 const express = require("express");
+const authenticate = require("../middleware/authenticate");
 const {
       getAllProducts,
       createProduct,
@@ -11,11 +12,11 @@ const {
 let productsRouter = express.Router();
 
 productsRouter.get("/search", getSearchedProducts);
-productsRouter.route("/").get(getAllProducts).post(createProduct);
+productsRouter.route("/").get(getAllProducts).post(authenticate, createProduct);
 productsRouter
       .route("/:id")
       .get(getProduct)
-      .patch(updateProduct)
-      .delete(deleteProduct);
+      .patch(authenticate, updateProduct)
+      .delete(authenticate, deleteProduct);
 
 module.exports = productsRouter;
