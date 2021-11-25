@@ -23,6 +23,14 @@ const {
       deleteCategory,
 } = require("./categories");
 
+const {
+      getAllCompanies,
+      createCompany,
+      getCompany,
+      updateCompany,
+      deleteCompany,
+} = require("./companies");
+
 const { register, login, logout } = require("./auth");
 
 module.exports = {
@@ -45,4 +53,9 @@ module.exports = {
       getCategory,
       updateCategory,
       deleteCategory,
+      getAllCompanies,
+      createCompany,
+      getCompany,
+      updateCompany,
+      deleteCompany,
 };
