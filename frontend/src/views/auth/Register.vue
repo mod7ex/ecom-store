@@ -1,16 +1,16 @@
 <template>
-      <form action="">
-            <div class="form-field text-field">
+      <form class="form">
+            <div class="form-field">
                   <label for="name">Full name </label>
                   <input type="text" id="name" placeholder="Full name" />
             </div>
 
-            <div class="form-field text-field">
+            <div class="form-field">
                   <label for="email">E-mail </label>
                   <input type="email" id="email" placeholder="E-mail" />
             </div>
 
-            <div class="form-field text-field">
+            <div class="form-field">
                   <label for="password">Password </label>
                   <input
                         type="password"
@@ -39,23 +39,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-form {
-      max-width: $basic-width;
-      background-color: white;
-      margin: auto !important;
-      padding: 3rem !important;
-      .form-field {
-            margin-bottom: $y-margin * 7 !important;
-
-            &.text-field {
-                  input {
-                        margin-top: $y-margin * 2 !important;
-                        display: block;
-                        width: 100%;
-                        @extend .input-field;
-                  }
-            }
-      }
-}
-</style>
+<style lang="scss" scoped></style>

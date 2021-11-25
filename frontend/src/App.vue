@@ -1,19 +1,19 @@
 <template>
-      <TopAdsBanner />
-      <Header />
+      <TheTopAdsBanner />
+      <TheHeader />
       <div id="content">
             <router-view />
       </div>
 </template>
 
 <script>
-import TopAdsBanner from "@/components/TopAdsBanner.vue";
-import Header from "@/components/Header.vue";
+import TheTopAdsBanner from "@/components/TheTopAdsBanner.vue";
+import TheHeader from "@/components/TheHeader.vue";
 
 export default {
       components: {
-            TopAdsBanner,
-            Header,
+            TheTopAdsBanner,
+            TheHeader,
       },
 };
 </script>
@@ -23,7 +23,7 @@ export default {
       min-height: 100vh;
       background-color: rgba($white-gray, 0.3);
       #content {
-            @extend .center;
+            @include center();
       }
 }
 </style>

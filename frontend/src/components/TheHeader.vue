@@ -53,6 +53,7 @@
 
 <script>
 export default {
+      name: "TheHeader",
       data() {
             return {
                   authIsVisible: false,
@@ -83,7 +84,7 @@ header {
       margin-bottom: $y-margin * 3 !important;
 
       .container {
-            @extend .center;
+            @include center();
             @include flex();
             flex-wrap: wrap;
 

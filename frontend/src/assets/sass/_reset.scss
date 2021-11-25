@@ -13,3 +13,13 @@ a {
 ul {
       list-style: none;
 }
+
+button,
+input[type="submit"] {
+      cursor: pointer;
+      background-color: $brand-color;
+      color: $white;
+      padding: $y-padding * 2 $x-padding * 5 !important;
+      @include shape-setup();
+      font-weight: bold;
+}

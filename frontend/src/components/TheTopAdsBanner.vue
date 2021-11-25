@@ -6,7 +6,7 @@
 
 <script>
 export default {
-      name: "TopAdsBanner",
+      name: "TheTopAdsBanner",
 };
 </script>
 
@@ -14,7 +14,7 @@ export default {
 #topbanner {
       @include flex();
       img {
-            @extend .center;
+            @include center();
       }
       min-height: $first-height * 3;
       background-color: black;

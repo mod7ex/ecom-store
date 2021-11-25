@@ -1,7 +1,7 @@
 <template>
-      <form aria-disabled="true">
+      <form class="form">
             <fieldset disabled="disabled">
-                  <div class="form-field text-field">
+                  <div class="form-field">
                         <label for="name">Full name </label>
                         <input
                               type="text"
@@ -11,7 +11,7 @@
                         />
                   </div>
 
-                  <div class="form-field text-field">
+                  <div class="form-field">
                         <label for="email">E-mail </label>
                         <input
                               type="email"
@@ -21,7 +21,7 @@
                         />
                   </div>
 
-                  <div class="form-field text-field">
+                  <div class="form-field">
                         <label for="password">Password </label>
                         <input
                               type="password"
@@ -44,21 +44,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-form {
-      background-color: white;
-      padding: 3rem !important;
-      .form-field {
-            margin-bottom: $y-margin * 7 !important;
-
-            &.text-field {
-                  input {
-                        margin-top: $y-margin * 2 !important;
-                        display: block;
-                        width: 100%;
-                        @extend .input-field;
-                  }
-            }
-      }
-}
-</style>
+<style lang="scss" scoped></style>
