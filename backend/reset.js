@@ -1,28 +1,21 @@
-require("dotenv").config();
-// const models = require("./models");
-const mongoose = require("mongoose");
-const redis = require("redis");
+const { redisClient } = require("./helpers/init_redis");
+const { connectDB } = require("./db/connect");
 
 let resetDB = async () => {
       try {
             /**
              * clear Redis Cash
              */
-            let client = redis.createClient({
-                  port: process.env.PORT_REDIS || 6379,
-                  host: process.env.HOST_REDIS || "127.0.0.1",
-            });
-
-            client.flushall();
-            // client.flushdb()
-            client.quit(() => {
+            redisClient.flushall();
+            // redisClient.flushdb()
+            redisClient.quit(() => {
                   console.log("\nRedis cash has been cleared ...");
             });
 
             /**
              * reset mongoDB
              */
-            let conn = await mongoose.connect(process.env.MONGO_URI);
+            let conn = await connectDB();
 
             let collections = await conn.connection.db.collections();
 
@@ -34,7 +27,7 @@ let resetDB = async () => {
             }
 
             await conn.connection.close();
-            console.log("\nmongodb database has been reset ...");
+            console.log("\nmongodb database has been reset ...\n");
             process.exit(0);
       } catch (error) {
             console.log(error);

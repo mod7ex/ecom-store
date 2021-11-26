@@ -4,8 +4,10 @@
       "description": "",
       "main": "index.js",
       "scripts": {
-            "dev": "NODE_ENV=development node reset.js && nodemon app.js",
-            "start": "NODE_ENV=production node app.js"
+            "dev": "export NODE_ENV=development && nodemon app.js",
+            "reset": "export NODE_ENV=development && node reset.js",
+            "seed": "export NODE_ENV=development && node './seeders/index.js'",
+            "start": "export NODE_ENV=production && node app.js"
       },
       "keywords": [],
       "author": "",
@@ -21,6 +23,7 @@
             "redis": "^3.1.2"
       },
       "devDependencies": {
+            "faker": "^5.5.3",
             "nodemon": "^2.0.15"
       }
 }

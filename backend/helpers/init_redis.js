@@ -6,26 +6,29 @@ const redisClient = redis.createClient({
       host: process.env.HOST_REDIS || "127.0.0.1",
 });
 
-redisClient.on("connect", () => {
-      console.error("\nClient connected to redis ...");
-});
+let trackRedis = (client = redisClient) => {
+      console.log("tracking redis now ....................");
 
-redisClient.on("ready", () => {
-      console.error("\nClient connected to redis and ready to use ...");
-});
-
-redisClient.on("error", (err) => {
-      console.error(err.message);
-});
-
-redisClient.on("end", () => {
-      console.error("\nClient disconnected from redis ...");
-});
-
-process.on("SIGINT", () => {
-      redisClient.quit(() => {
-            console.log("\nRedis connection closed ...");
+      client.on("connect", () => {
+            console.error("\nClient connected to redis ...");
       });
-});
 
-module.exports = redisClient;
+      client.on("ready", () => {
+            console.error("\nClient connected to redis and ready to use ...");
+      });
+
+      client.on("error", (err) => {
+            console.error(err.message);
+      });
+
+      client.on("end", () => {
+            console.error("\nClient disconnected from redis ...");
+      });
+
+      process.on("SIGINT", () => {
+            client.quit();
+            // process.exit(0);
+      });
+};
+
+module.exports = { redisClient, trackRedis };

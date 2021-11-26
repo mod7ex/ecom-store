@@ -4,6 +4,7 @@ let productSchema = new mongoose.Schema(
       {
             sku: {
                   type: String,
+                  minlength: 8,
                   maxLength: 12,
             },
 
@@ -18,15 +19,17 @@ let productSchema = new mongoose.Schema(
                   maxLength: 512,
             },
 
+            image: {
+                  type: String,
+            },
+
             regular_price: {
                   type: Number,
                   required: [true, "Price is required"],
-                  maxLength: 64,
             },
 
             sale_price: {
                   type: Number,
-                  default: null,
             },
 
             company: {
@@ -47,11 +50,6 @@ let productSchema = new mongoose.Schema(
             rating: {
                   type: Number,
                   default: 0,
-            },
-
-            createdAt: {
-                  type: Date,
-                  default: Date.now(),
             },
       },
       { timestamps: true }

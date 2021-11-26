@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { BadRequestError } = require("../errors");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const redisClient = require("../helpers/init_redis");
+const { redisClient } = require("../helpers/init_redis");
 
 let userSchema = new mongoose.Schema({
       name: {
@@ -77,6 +77,11 @@ userSchema.methods.killJWTToken = function () {
       redisClient.del(this._id.toString());
 };
 
+userSchema.methods.checkPassword = async function (passwd) {
+      let isValid = await bcryptjs.compare(passwd, this.password);
+      return isValid;
+};
+
 // Virtual fields
 userSchema.virtual("front_user").get(function () {
       return {
@@ -85,10 +90,5 @@ userSchema.virtual("front_user").get(function () {
             email: this.email,
       };
 });
-
-userSchema.methods.checkPassword = async function (passwd) {
-      let isValid = await bcryptjs.compare(passwd, this.password);
-      return isValid;
-};
 
 module.exports = mongoose.model("User", userSchema);
