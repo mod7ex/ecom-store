@@ -6,12 +6,33 @@
 }
 
 @mixin shape-setup($color: $black-gray, $shadow: 1px) {
-      border-radius: 3px;
       border: none;
+      border-radius: $border-radius;
       box-shadow: $shadow $shadow 11px 0 rgba($color, 0.3);
+}
+
+@mixin btn(
+      $bg-color: $brand-color,
+      $color: $white,
+      $xpd: $x-padding,
+      $ypd: $y-padding,
+      $fwght: normal
+) {
+      cursor: pointer;
+      background-color: $bg-color;
+      color: $color;
+      padding: $ypd * 2 $xpd * 5 !important;
+      @include shape-setup();
+      font-weight: $fwght;
 }
 
 @mixin center($width: $screen) {
       max-width: $width;
       margin: auto !important;
+}
+
+@mixin border($br-color: $white) {
+      border-width: 2px !important;
+      border-radius: $border-radius !important;
+      border-color: $br-color !important;
 }

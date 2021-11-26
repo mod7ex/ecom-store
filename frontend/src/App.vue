@@ -4,16 +4,19 @@
       <div id="content">
             <router-view />
       </div>
+      <TheFooter />
 </template>
 
 <script>
 import TheTopAdsBanner from "@/components/TheTopAdsBanner.vue";
 import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
 
 export default {
       components: {
             TheTopAdsBanner,
             TheHeader,
+            TheFooter,
       },
 };
 </script>

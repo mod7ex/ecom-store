@@ -2,7 +2,7 @@
       <header>
             <div class="container">
                   <router-link :to="{ name: 'home' }">
-                        <img src="@/assets/avatr.png" />
+                        <img class="img-logo" src="@/assets/avatar.png" />
                   </router-link>
 
                   <form>
@@ -130,9 +130,6 @@ header {
                         margin-right: $x-margin * 3 !important;
                   }
             }
-      }
-      img {
-            height: 70px;
       }
 }
 </style>

@@ -33,7 +33,6 @@ export default {
       }
 
       div {
-            // background-color: green;
             .ad {
                   min-height: $basic-height;
                   margin-left: 0 !important;

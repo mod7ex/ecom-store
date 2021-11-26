@@ -30,3 +30,9 @@
       }
       @extend .form-field;
 }
+
+img {
+      &.img-logo {
+            height: 70px;
+      }
+}
