@@ -1,24 +1,27 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const connectDB = (url) => {
+const connectDB = (url = process.env.MONGO_URI) => {
       return mongoose.connect(url);
 };
 
-process.on("SIGINT", async () => {
-      await mongoose.connection.close();
-      process.exit(0);
-});
+const trackMONGO = () => {
+      mongoose.connection.on("connected", () => {
+            console.log("\nConnected to mongoDB ...");
+      });
 
-mongoose.connection.on("connected", () => {
-      console.log("\nConnected to db ...");
-});
+      mongoose.connection.on("error", (err) => {
+            console.log(err.message);
+      });
 
-mongoose.connection.on("error", (err) => {
-      console.log(err);
-});
+      mongoose.connection.on("disconnected", () => {
+            console.log("\nDisconnected from mongoDB ...");
+      });
 
-mongoose.connection.on("disconnected", () => {
-      console.log("\nDisconnected from db ...");
-});
+      process.on("SIGINT", async () => {
+            await mongoose.connection.close();
+            process.exit(0);
+      });
+};
 
-module.exports = connectDB;
+module.exports = { connectDB, trackMONGO };

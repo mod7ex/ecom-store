@@ -1,21 +1,35 @@
+const { User } = require("../models");
+const { StatusCodes } = require("http-status-codes");
+
 let getAllUsers = async (req, res, next) => {
-      res.send("all Users");
+      let users = await User.find({});
+      res.status(StatusCodes.OK).json(users);
 };
 
 let createUser = async (req, res, next) => {
-      res.send("create User");
+      let user = await User.create(req.body);
+      res.status(StatusCodes.CREATED).json(user);
 };
 
 let getUser = async (req, res, next) => {
-      res.send("get single User");
+      let { id } = req.params;
+      let user = await User.findById(id);
+      res.status(StatusCodes.OK).json(user);
 };
 
 let updateUser = async (req, res, next) => {
-      res.send("update User");
+      let { id } = req.params;
+      let user = await User.findByIdAndUpdate(id, req.body, {
+            new: true,
+            runValidators: true,
+      });
+      res.status(StatusCodes.OK).json(user);
 };
 
 let deleteUser = async (req, res, next) => {
-      res.send("delete User");
+      let { id } = req.params;
+      let user = await User.findByIdAndDelete(id);
+      res.status(StatusCodes.OK).json(user);
 };
 
 module.exports = {
