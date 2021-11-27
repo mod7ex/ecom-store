@@ -1,7 +1,7 @@
 const faker = require("faker");
 const { User } = require("../models");
 
-let generateUser = async (n = 10) => {
+let generateUsers = async (n = 10) => {
       // let r = Math.floor(Math.random() * 26 + 7);
       let users = [];
 
@@ -24,4 +24,4 @@ let generateUser = async (n = 10) => {
       await User.create(users);
 };
 
-module.exports = generateUser;
+module.exports = generateUsers;

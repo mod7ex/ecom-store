@@ -1,5 +1,9 @@
 const { connectDB } = require("../db/connect");
-const generateUser = require("./userSeeder");
+const generateUsers = require("./userSeeder");
+const generateCategories = require("./categorySeeder");
+const generateCompanies = require("./companySeeder");
+const generateProducts = require("./productSeeder");
+const generateRatings = require("./ratingSeeder");
 
 let seed = async () => {
       let conn = await connectDB();
@@ -11,7 +15,11 @@ let seed = async () => {
 
       console.log("seeding database ...");
 
-      await generateUser();
+      // await generateUsers();
+      // await generateCategories();
+      // await generateCompanies();
+      // await generateProducts();
+      // await generateRatings();
 
       process.exit(0);
 };

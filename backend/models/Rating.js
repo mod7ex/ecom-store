@@ -21,4 +21,6 @@ let ratingSchema = new mongoose.Schema(
       { timestamps: true }
 );
 
+ratingSchema.index({ product: 1, user: 1 }, { unique: true });
+
 module.exports = mongoose.model("Rating", ratingSchema);
