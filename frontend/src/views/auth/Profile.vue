@@ -44,4 +44,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+form {
+      input[type="submit"] {
+            @extend .btn;
+            @include shape-setup();
+      }
+}
+</style>

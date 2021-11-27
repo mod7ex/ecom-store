@@ -7,3 +7,12 @@ export default {
       name: "Logout",
 };
 </script>
+
+<style lang="scss" scoped>
+form {
+      input[type="submit"] {
+            @extend .btn;
+            @include shape-setup();
+      }
+}
+</style>

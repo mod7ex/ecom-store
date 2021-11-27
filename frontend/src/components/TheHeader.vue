@@ -88,15 +88,20 @@ header {
             @include flex();
             flex-wrap: wrap;
 
+            button {
+                  @extend .btn;
+                  @include shape-setup();
+            }
+
             div {
                   position: relative;
 
                   button {
                         background-color: rgba($white-gray, 0.7);
-                        color: $brand-color;
-                        font-weight: bolder;
                         box-shadow: none;
+                        color: black;
                         &:hover {
+                              color: $brand-color;
                               background-color: $white-gray;
                         }
                   }

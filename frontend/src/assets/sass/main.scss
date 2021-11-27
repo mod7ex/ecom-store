@@ -1,11 +1,5 @@
 .input-field {
       padding: $y-padding * 2 $x-padding !important;
-      @include shape-setup();
-      border: 1px solid rgba($black-gray, 0.5);
-      &:focus {
-            outline: none;
-            border: 1px solid rgba($black-gray, 0.7);
-      }
 }
 
 .form-field {
@@ -34,5 +28,17 @@
 img {
       &.img-logo {
             height: 70px;
+      }
+}
+
+.btn {
+      border: none;
+      background-color: rgba($brand-color, 0.9);
+      color: white;
+      padding: $y-padding * 2 $x-padding * 3 !important;
+      font-weight: bold;
+
+      &:hover {
+            background-color: $brand-color;
       }
 }
