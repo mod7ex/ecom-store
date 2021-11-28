@@ -15,6 +15,8 @@ ul {
 }
 
 img {
+      max-width: 95vw !important;
+
       &.img-logo {
             height: 70px;
       }
@@ -40,7 +42,7 @@ input[type="text"] {
       border-radius: $border-radius;
       border-color: transparent;
       padding: $y-padding * 2 $x-padding !important;
-      box-shadow: 1px 1px 11px 0 rgba($black-gray, 0.3);
+      @include shadow();
       &:focus {
             outline: none;
             border-color: rgba($black-gray, 0.7);

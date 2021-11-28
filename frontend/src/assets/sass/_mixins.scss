@@ -1,8 +1,18 @@
-@mixin flex($direction: row, $justify: space-between, $align: center) {
+@mixin flex(
+      $direction: row,
+      $justify: space-between,
+      $align: center,
+      $wrap: nowrap
+) {
       display: flex;
       flex-direction: $direction;
       justify-content: $justify;
       align-items: $align;
+      flex-wrap: $wrap;
+}
+
+@mixin shadow($color: $black-gray, $a: 1px) {
+      box-shadow: $a $a 11px 0 rgba($color, 0.3);
 }
 
 @mixin center($width: $screen) {

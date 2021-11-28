@@ -22,12 +22,8 @@
 </template>
 
 <script>
-import Box from "./Box.vue";
 export default {
       name: "Auth",
-      components: {
-            Box,
-      },
 
       props: {
             submitValue: {

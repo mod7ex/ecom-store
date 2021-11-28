@@ -1,17 +1,34 @@
 <template>
       <Block>
-            <h3>the featured section</h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
-            perspiciatis minus culpa corrupti totam assumenda in perferendis
-            delectus nostrum eaque quidem nesciunt, tenetur ullam. Esse et
-            repudiandae beatae quisquam laboriosam.
+            <Box>
+                  <h2>the featured section</h2>
+                  <div class="featured-items">
+                        <Product />
+                        <Product />
+                        <Product />
+                        <Product />
+                        <Product />
+                  </div>
+            </Box>
       </Block>
 </template>
 
 <script>
+import Product from "@/components/Product.vue";
+
 export default {
       name: "Featured",
+
+      components: {
+            Product,
+      },
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.featured-items {
+      font-size: large;
+      margin-top: $y-margin * 5 !important;
+      @include flex(row, flex-start, flex-start, wrap);
+}
+</style>

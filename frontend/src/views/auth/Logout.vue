@@ -8,10 +8,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-form {
-      input[type="submit"] {
-            @extend .btn;
-      }
-}
-</style>
+<style lang="scss" scoped></style>

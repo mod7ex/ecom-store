@@ -2,6 +2,7 @@
       <TheTopSection />
       <Featured />
       <Category />
+      <Category />
 </template>
 
 <script>

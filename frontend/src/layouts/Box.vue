@@ -29,8 +29,8 @@ export default {
 <style lang="scss">
 .box {
       padding: $padding !important;
-      margin: $margin;
+      margin: $margin !important;
       border-radius: $border-radius;
-      box-shadow: 1px 1px 11px 0 rgba($white-gray, 0.3);
+      @include shadow();
 }
 </style>
