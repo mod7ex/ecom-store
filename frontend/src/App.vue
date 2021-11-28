@@ -27,6 +27,7 @@ export default {
       background-color: rgba($white-gray, 0.3);
       #content {
             @include center();
+            margin-bottom: $y-margin * 13 !important;
       }
 }
 </style>

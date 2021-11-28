@@ -26,10 +26,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .box {
       padding: $padding !important;
-      margin: $margin !important;
+      margin: $margin;
       border-radius: $border-radius;
       box-shadow: 1px 1px 11px 0 rgba($white-gray, 0.3);
 }

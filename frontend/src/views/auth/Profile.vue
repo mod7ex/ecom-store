@@ -1,5 +1,9 @@
 <template>
-      <form class="form">
+      <Auth :submitValue="'Save'" :disabled="true">
+            <template v-slot:title>
+                  <h2>Profile</h2>
+            </template>
+
             <fieldset disabled="disabled">
                   <div class="form-field">
                         <label for="name">Full name </label>
@@ -30,18 +34,18 @@
                               value="password"
                         />
                   </div>
-
-                  <div class="form-field">
-                        <input class="btn" type="submit" value="Save" />
-                  </div>
             </fieldset>
-      </form>
+      </Auth>
 </template>
 
 <script>
+import Auth from "@/layouts/Auth.vue";
+
 export default {
       name: "Profile",
+
+      components: {
+            Auth,
+      },
 };
 </script>
-
-<style lang="scss"></style>

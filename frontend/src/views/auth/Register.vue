@@ -1,5 +1,9 @@
 <template>
-      <form class="form">
+      <Auth :submitValue="'Register'">
+            <template v-slot:title>
+                  <h2>Register</h2>
+            </template>
+
             <div class="form-field">
                   <label for="name">Full name </label>
                   <input type="text" id="name" placeholder="Full name" />
@@ -26,17 +30,17 @@
                   </label>
                   <input type="checkbox" id="agree" />
             </div>
-
-            <div class="form-field">
-                  <input class="btn" type="submit" value="Register" />
-            </div>
-      </form>
+      </Auth>
 </template>
 
 <script>
+import Auth from "@/layouts/Auth.vue";
+
 export default {
       name: "Register",
+
+      components: {
+            Auth,
+      },
 };
 </script>
-
-<style lang="scss"></style>

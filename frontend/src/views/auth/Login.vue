@@ -1,5 +1,9 @@
 <template>
-      <form class="form">
+      <Auth :submitValue="'Login'">
+            <template v-slot:title>
+                  <h2>Login</h2>
+            </template>
+
             <div class="form-field">
                   <label for="email">E-mail </label>
                   <input type="email" id="email" placeholder="E-mail" />
@@ -18,17 +22,17 @@
                   <label for="remember">Remember me </label>
                   <input type="checkbox" id="remember" />
             </div>
-
-            <div class="form-field">
-                  <input class="btn" type="submit" value="Login" />
-            </div>
-      </form>
+      </Auth>
 </template>
 
 <script>
+import Auth from "@/layouts/Auth.vue";
+
 export default {
       name: "Login",
+
+      components: {
+            Auth,
+      },
 };
 </script>
-
-<style lang="scss"></style>
