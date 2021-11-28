@@ -1,7 +1,3 @@
-.input-field {
-      padding: $y-padding * 2 $x-padding !important;
-}
-
 .form-field {
       margin-bottom: $y-margin * 7 !important;
 
@@ -12,33 +8,23 @@
             margin-top: $y-margin * 2 !important;
             display: block;
             width: 100%;
-            @extend .input-field;
       }
 }
 
 .form {
       @include center($basic-width);
-      padding: 2rem !important;
-      fieldset {
-            border: none;
-      }
       @extend .form-field;
 }
 
-img {
-      &.img-logo {
-            height: 70px;
-      }
-}
-
 .btn {
+      background-color: $brand-color;
       border: none;
-      background-color: rgba($brand-color, 0.9);
       color: white;
-      padding: $y-padding * 2 $x-padding * 3 !important;
+      padding: $y-padding * 2 0 !important;
+      min-width: $first-width * 2.3;
       font-weight: bold;
 
       &:hover {
-            background-color: $brand-color;
+            background-color: rgba($brand-color, 0.7);
       }
 }

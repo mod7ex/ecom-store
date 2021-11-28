@@ -12,7 +12,6 @@ export default {
 form {
       input[type="submit"] {
             @extend .btn;
-            @include shape-setup();
       }
 }
 </style>

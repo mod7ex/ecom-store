@@ -90,7 +90,6 @@ header {
 
             button {
                   @extend .btn;
-                  @include shape-setup();
             }
 
             div {
@@ -112,7 +111,7 @@ header {
                         background-color: white;
                         width: 130px;
                         top: 120%;
-                        @include shape-setup();
+                        // @include shape-setup();
                         li {
                               padding: $x-padding !important;
                               a {
@@ -130,7 +129,6 @@ header {
                   flex: 1;
                   @include flex();
                   input[type="search"] {
-                        @extend .input-field;
                         flex: 1;
                         margin-right: $x-margin * 3 !important;
                   }

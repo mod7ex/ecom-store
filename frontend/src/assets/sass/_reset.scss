@@ -6,7 +6,7 @@
 
 a {
       text-decoration: none;
-      display: inline-block;
+      // display: inline-block;
       color: black;
 }
 
@@ -14,22 +14,35 @@ ul {
       list-style: none;
 }
 
+img {
+      &.img-logo {
+            height: 70px;
+      }
+}
+
+fieldset {
+      border: none;
+}
+
 button,
 input[type="submit"],
 input[type="button"] {
       cursor: pointer;
       border-radius: $border-radius !important;
-      background-color: transparent;
+      // background-color: transparent;
 }
 
 input[type="search"],
 input[type="password"],
 input[type="email"],
 input[type="text"] {
-      @include shape-setup();
-      border: 1px solid rgba($black-gray, 0.5);
+      border: 1px solid;
+      border-radius: $border-radius;
+      border-color: transparent;
+      padding: $y-padding * 2 $x-padding !important;
+      box-shadow: 1px 1px 11px 0 rgba($black-gray, 0.3);
       &:focus {
             outline: none;
-            border: 1px solid rgba($black-gray, 0.9);
+            border-color: rgba($black-gray, 0.7);
       }
 }

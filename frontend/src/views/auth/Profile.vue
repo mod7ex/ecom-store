@@ -32,7 +32,7 @@
                   </div>
 
                   <div class="form-field">
-                        <input type="submit" value="Save" />
+                        <input class="btn" type="submit" value="Save" />
                   </div>
             </fieldset>
       </form>
@@ -44,11 +44,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-form {
-      input[type="submit"] {
-            @extend .btn;
-            @include shape-setup();
-      }
-}
-</style>
+<style lang="scss"></style>

@@ -20,7 +20,7 @@
             </div>
 
             <div class="form-field">
-                  <input type="submit" value="Login" />
+                  <input class="btn" type="submit" value="Login" />
             </div>
       </form>
 </template>
@@ -31,11 +31,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-form {
-      input[type="submit"] {
-            @extend .btn;
-            @include shape-setup();
-      }
-}
-</style>
+<style lang="scss"></style>

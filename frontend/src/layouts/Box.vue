@@ -28,8 +28,9 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-      @include shape-setup($white-gray);
-      padding: $x-padding !important;
-      margin: $x-margin !important;
+      padding: $padding !important;
+      margin: $margin !important;
+      border-radius: $border-radius;
+      box-shadow: 1px 1px 11px 0 rgba($white-gray, 0.3);
 }
 </style>
