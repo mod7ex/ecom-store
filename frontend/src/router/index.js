@@ -1,3 +1,5 @@
+const DEFAULT_TITLE = "Adnovado";
+
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Search from "../views/Search.vue";
@@ -12,24 +14,38 @@ const routes = [
             path: "/",
             name: "home",
             component: Home,
+            meta: {
+                  // requiresAuth: false,
+                  title: "Home",
+            },
       },
 
       {
             path: "/search",
             name: "search",
             component: Search,
+            meta: {
+                  // requiresAuth: false,
+                  title: "Search a product",
+            },
       },
 
       {
             path: "/cart",
             name: "cart",
             component: Cart,
+            meta: {
+                  title: "Cart items",
+            },
       },
 
       {
             path: "/login",
             name: "login",
             component: Login,
+            meta: {
+                  title: "Login",
+            },
       },
 
       {
@@ -42,28 +58,38 @@ const routes = [
             path: "/register",
             name: "register",
             component: Register,
+            meta: {
+                  title: "Register",
+            },
       },
 
       {
             path: "/profile",
             name: "profile",
             component: Profile,
+            meta: {
+                  title: "Profile",
+            },
       },
 
       {
             path: "/about",
             name: "about",
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () =>
-                  import(/* webpackChunkName: "about" */ "../views/About.vue"),
+            component: () => import("../views/About.vue"),
+            meta: {
+                  title: "About",
+            },
       },
 ];
 
 const router = createRouter({
       history: createWebHistory(process.env.BASE_URL),
       routes,
+});
+
+router.beforeEach((to, from, next) => {
+      next();
+      document.title = to.meta.title || DEFAULT_TITLE;
 });
 
 export default router;

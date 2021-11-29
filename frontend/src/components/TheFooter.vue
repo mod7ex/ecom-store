@@ -5,7 +5,7 @@
                         <div>
                               <img
                                     class="img-logo"
-                                    src="@/assets/avatar.png"
+                                    src="@/assets/svg/footer-avatar.svg"
                                     alt=""
                               />
                         </div>
@@ -30,8 +30,34 @@
                               </form>
                         </div>
                         <div>
-                              Lorem ipsum dolor sit amet consectetur
-                              adipisicing.
+                              <div>
+                                    <div
+                                          class="marketing-download-links"
+                                          id="cart-svg"
+                                    >
+                                          <img
+                                                src="@/assets/svg/footer-cart.svg"
+                                          />
+                                          <div>
+                                                <h5>NEW ON ADNOVADO?</h5>
+                                                <small>
+                                                      Subscribe to our
+                                                      newsletter and get our
+                                                      best offres!
+                                                </small>
+                                          </div>
+                                    </div>
+                                    <div class="marketing-download-links">
+                                          <a href="#">
+                                                <img
+                                                      src="@/assets/svg/app-store.svg"
+                                          /></a>
+                                          <a href="#">
+                                                <img
+                                                      src="@/assets/svg/play-store.svg"
+                                          /></a>
+                                    </div>
+                              </div>
                         </div>
                   </div>
             </div>
@@ -42,7 +68,7 @@
                         <hr />
                         <img
                               class="img-logo"
-                              src="@/assets/avatar.png"
+                              src="@/assets/svg/footer-avatar.svg"
                               alt=""
                         />
                   </div>
@@ -66,6 +92,23 @@ footer {
 
                   hr {
                         margin-top: $y-margin * 5 !important;
+                  }
+
+                  div {
+                        div {
+                              .marketing-download-links {
+                                    @include flex();
+                                    &#cart-svg {
+                                          margin-bottom: $margin * 3;
+                                          img {
+                                                margin-right: $margin * 2;
+                                                background-color: $brand-color;
+                                                padding: $padding;
+                                                border-radius: $border-radius;
+                                          }
+                                    }
+                              }
+                        }
                   }
             }
 

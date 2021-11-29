@@ -2,7 +2,7 @@
       <header>
             <div class="container">
                   <router-link :to="{ name: 'home' }">
-                        <img class="img-logo" src="@/assets/avatar.png" />
+                        <img class="img-logo" src="@/assets/avatar.svg" />
                   </router-link>
 
                   <form>
