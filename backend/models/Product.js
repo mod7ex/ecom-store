@@ -8,6 +8,10 @@ let productSchema = new mongoose.Schema(
                   maxLength: 12,
             },
 
+            inventory: {
+                  type: Number,
+            },
+
             name: {
                   type: String,
                   required: [true, "Name is required"],
@@ -20,7 +24,7 @@ let productSchema = new mongoose.Schema(
             },
 
             image: {
-                  type: String,
+                  type: [String],
             },
 
             regular_price: {
@@ -30,6 +34,12 @@ let productSchema = new mongoose.Schema(
 
             sale_price: {
                   type: Number,
+                  // validate: {
+                  //       validator: function (v) {
+                  //             return v <= this.regular_price;
+                  //       },
+                  //       message: (props) => `Error`,
+                  // },
             },
 
             company: {
@@ -45,6 +55,20 @@ let productSchema = new mongoose.Schema(
             featured: {
                   type: Boolean,
                   default: false,
+            },
+
+            settings: {
+                  reviews: {
+                        enabled: Boolean,
+                        only_from_verified_owners: Boolean,
+                        show_verified_owner_label: Boolean,
+                        require_rating_to_leave_review: Boolean,
+                  },
+
+                  ratings: {
+                        enabled: Boolean,
+                        only_from_verified_owners: Boolean,
+                  },
             },
       },
       { timestamps: true }

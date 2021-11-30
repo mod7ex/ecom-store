@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let ratingSchema = new mongoose.Schema(
+let reviewSchema = new mongoose.Schema(
       {
             product: {
                   type: mongoose.SchemaTypes.ObjectId,
@@ -14,16 +14,16 @@ let ratingSchema = new mongoose.Schema(
                   ref: "User",
             },
 
-            value: {
-                  type: Number,
-                  required: [true, "Rating value is required"],
-                  max: 5,
-                  min: 0,
+            review: {
+                  type: String,
+                  maxlength: 512,
+                  required: [true, "Review value is required"],
             },
       },
+
       { timestamps: true }
 );
 
-ratingSchema.index({ product: 1, user: 1 }, { unique: true });
+reviewSchema.index({ product: 1, user: 1 }, { unique: true });
 
-module.exports = mongoose.model("Rating", ratingSchema);
+module.exports = mongoose.model("Review", reviewSchema);
