@@ -5,6 +5,7 @@ const Order = require("./Order");
 const User = require("./User");
 const Rating = require("./Rating");
 const Review = require("./Review");
+const ShippingClass = require("./ShippingClass");
 
 module.exports = {
       Category,
@@ -14,4 +15,5 @@ module.exports = {
       User,
       Rating,
       Review,
+      ShippingClass,
 };

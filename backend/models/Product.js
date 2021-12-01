@@ -1,17 +1,19 @@
 const mongoose = require("mongoose");
 
+let attributeSchema = new mongoose.Schema({
+      name: {
+            type: String,
+            maxlength: 32,
+      },
+      value: {
+            type: String,
+            maxlength: 256,
+      },
+      visible_on_product_page: Boolean,
+});
+
 let productSchema = new mongoose.Schema(
       {
-            sku: {
-                  type: String,
-                  minlength: 8,
-                  maxLength: 12,
-            },
-
-            inventory: {
-                  type: Number,
-            },
-
             name: {
                   type: String,
                   required: [true, "Name is required"],
@@ -23,23 +25,28 @@ let productSchema = new mongoose.Schema(
                   maxLength: 512,
             },
 
-            image: {
-                  type: [String],
+            media: {
+                  main_image: String,
+                  video: String,
+                  images: [String],
             },
 
-            regular_price: {
-                  type: Number,
-                  required: [true, "Price is required"],
-            },
+            price: {
+                  regular: {
+                        type: Number,
+                        required: [true, "Price is required"],
+                  },
 
-            sale_price: {
-                  type: Number,
-                  // validate: {
-                  //       validator: function (v) {
-                  //             return v <= this.regular_price;
-                  //       },
-                  //       message: (props) => `Error`,
-                  // },
+                  sale: {
+                        value: Number,
+                        schedulable: {
+                              yes: { type: Boolean, default: false },
+                              schedule: {
+                                    from: Date,
+                                    to: Date,
+                              },
+                        },
+                  },
             },
 
             company: {
@@ -57,6 +64,33 @@ let productSchema = new mongoose.Schema(
                   default: false,
             },
 
+            inventory: {
+                  sku: {
+                        type: String,
+                        minlength: 8,
+                        maxLength: 12,
+                  },
+                  stock_quantity: Number,
+                  sold_individually: Boolean,
+                  allow_back_orders: Boolean,
+            },
+
+            linked_products: {
+                  up_sells: [
+                        { type: mongoose.SchemaTypes.ObjectId, ref: "Product" },
+                  ],
+                  cross_sells: [
+                        { type: mongoose.SchemaTypes.ObjectId, ref: "Product" },
+                  ],
+            },
+
+            attributes: [attributeSchema],
+
+            purchase_note: {
+                  type: String,
+                  maxlength: 512,
+            },
+
             settings: {
                   reviews: {
                         enabled: Boolean,
@@ -68,6 +102,67 @@ let productSchema = new mongoose.Schema(
                   ratings: {
                         enabled: Boolean,
                         only_from_verified_owners: Boolean,
+                  },
+
+                  stock: {
+                        low_stock: {
+                              notify: Boolean,
+                              threshold: {
+                                    type: Number,
+                                    default: 2,
+                              },
+                        },
+
+                        out_of_stock: {
+                              notify: Boolean,
+                              hide: Boolean, // hide the product from listing
+                              threshold: {
+                                    type: Number,
+                                    default: 0,
+                              },
+                        },
+
+                        status: {
+                              show: Boolean, // either to show stock to the customer
+                              display_format: {
+                                    type: String,
+                                    enum: [
+                                          "always_show", // ex: x items left
+                                          "only_show_at_low_stock", // ex: only x items left
+                                          "never_show",
+                                          "in stock",
+                                          "Out of stock",
+                                    ],
+                              },
+                        },
+                  },
+
+                  shipping: {
+                        weight: {
+                              value: Number,
+                              unit: {
+                                    type: String,
+                                    enums: ["g", "kg"],
+                              },
+                        },
+                        dimensions: {
+                              unit: {
+                                    type: String,
+                                    enums: ["cm", "m"],
+                              },
+                              length: Number,
+                              width: Number,
+                              height: Number,
+                        },
+                        shipping_class: {
+                              type: mongoose.SchemaTypes.ObjectId,
+                              ref: "ShippingClass",
+                        },
+                  },
+
+                  tax: {
+                        type: String,
+                        enum: ["taxable", "shipping_only"],
                   },
             },
       },
