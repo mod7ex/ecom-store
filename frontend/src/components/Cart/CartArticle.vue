@@ -1,7 +1,7 @@
 <template>
       <div class="cart-article">
             <Box class="article cart-article-section">
-                  <img src="https://placeimg.com/60/60/tech" alt="" />
+                  <img src="https://placeimg.com/70/70/tech" alt="" />
                   <div>
                         <h2>
                               <router-link to="/">
@@ -38,7 +38,8 @@ export default {
 
 <style lang="scss">
 .cart-article {
-      margin-top: $margin * 3;
+      min-height: calc(70px + #{$padding * 2});
+      margin-bottom: $margin * 3 !important;
       @include flex(
             $direction: row,
             $justify: stretch,
@@ -99,9 +100,10 @@ export default {
                         $justify: space-around,
                         $align: center
                   );
+
                   div {
-                        text-align: center;
                         small {
+                              text-align: center;
                               display: block;
                               margin-bottom: $y-margin;
                               &:first-of-type {

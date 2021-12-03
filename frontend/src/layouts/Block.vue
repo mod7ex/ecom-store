@@ -3,7 +3,7 @@
             <div class="block-content">
                   <slot>Default content</slot>
             </div>
-            <small>adnovado</small>
+            <small class="block-badge">adnovado</small>
       </div>
 </template>
 
@@ -13,10 +13,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .block {
-      margin-bottom: $x-margin * 3 !important;
-      small {
+      margin-bottom: $y-between-margin !important;
+      small.block-badge {
             color: $brand-color;
             font-weight: bold;
             font-size: 11px;

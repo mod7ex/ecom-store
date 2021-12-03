@@ -1,6 +1,6 @@
 <template>
       <div id="topbanner">
-            <img src="@/assets/ads.gif" alt="" />
+            <img src="@/assets/img/ads.gif" alt="" />
       </div>
 </template>
 

@@ -15,13 +15,14 @@ export default {
 
 <style lang="scss">
 .cart-total-block {
-      @include center($basic-width * 1.5);
+      @include center($width: $basic-width * 1.5);
       @include flex(
             $direction: column,
             $justify: space-between,
             $align: flex-end,
             $wrap: nowrap
       );
+
       div {
             @include flex(
                   $direction: row,

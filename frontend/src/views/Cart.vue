@@ -16,24 +16,32 @@
             </div>
       </Block>
       <CartTotal />
+      <CartActions />
 </template>
 
 <script>
 import CartArticle from "@/components/Cart/CartArticle.vue";
 import CartTotal from "@/components/Cart/CartTotal.vue";
+import CartActions from "@/components/Cart/CartActions.vue";
 
 export default {
       name: "Cart",
       components: {
             CartArticle,
             CartTotal,
+            CartActions,
       },
 };
 </script>
 
 <style lang="scss">
 .cart-articles-container {
-      @include center($basic-width * 1.5);
+      h1 {
+            margin-bottom: $y-between-margin * 0.5 !important;
+      }
+
+      @include center($width: $basic-width * 1.5);
+
       .cart-article-headers {
             @include flex(
                   $direction: row,
@@ -41,7 +49,7 @@ export default {
                   $align: stretch,
                   $wrap: nowrap
             );
-            margin-top: $y-margin * 5 !important;
+            margin-bottom: $margin * 2 !important;
 
             .cart-article-header {
                   flex: 1;

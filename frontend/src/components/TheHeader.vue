@@ -2,7 +2,7 @@
       <header>
             <div class="container">
                   <router-link :to="{ name: 'home' }">
-                        <img class="img-logo" src="@/assets/avatar.svg" />
+                        <img class="img-logo" src="@/assets/svg/avatar.svg" />
                   </router-link>
 
                   <form>
@@ -80,7 +80,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 header {
       background-color: white;
       padding: $first-height !important;

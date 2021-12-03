@@ -8,10 +8,7 @@
                   <div>
                         <Box class="ad">ad 1</Box>
                         <Box class="ad">
-                              <img
-                                    src="https://ma.jumia.is/cms/000_2021/000000_BlackFriday/BF-Generique-.gif"
-                                    alt=""
-                              />
+                              <img src="@/assets/img/adbox.gif" alt="" />
                         </Box>
                   </div>
             </div>

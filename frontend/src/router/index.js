@@ -1,19 +1,12 @@
 const DEFAULT_TITLE = "Adnovado";
 
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Search from "../views/Search.vue";
-import Cart from "../views/Cart.vue";
-import Login from "../views/auth/Login.vue";
-import Register from "../views/auth/Register.vue";
-import Profile from "../views/auth/Profile.vue";
-import Logout from "../views/auth/Logout.vue";
 
 const routes = [
       {
             path: "/",
             name: "home",
-            component: Home,
+            component: () => import("../views/Home.vue"),
             meta: {
                   // requiresAuth: false,
                   title: "Home",
@@ -23,7 +16,7 @@ const routes = [
       {
             path: "/search",
             name: "search",
-            component: Search,
+            component: () => import("../views/Search.vue"),
             meta: {
                   // requiresAuth: false,
                   title: "Search a product",
@@ -33,7 +26,7 @@ const routes = [
       {
             path: "/cart",
             name: "cart",
-            component: Cart,
+            component: () => import("../views/Cart.vue"),
             meta: {
                   title: "Cart items",
             },
@@ -42,7 +35,7 @@ const routes = [
       {
             path: "/login",
             name: "login",
-            component: Login,
+            component: () => import("../views/auth/Login.vue"),
             meta: {
                   title: "Login",
             },
@@ -51,13 +44,14 @@ const routes = [
       {
             path: "/logout",
             name: "logout",
-            component: Logout,
+            component: () => import("../views/auth/Logout.vue"),
       },
 
       {
             path: "/register",
             name: "register",
-            component: Register,
+            component: () => import("../views/auth/Register.vue"),
+
             meta: {
                   title: "Register",
             },
@@ -66,7 +60,7 @@ const routes = [
       {
             path: "/profile",
             name: "profile",
-            component: Profile,
+            component: () => import("../views/auth/Profile.vue"),
             meta: {
                   title: "Profile",
             },

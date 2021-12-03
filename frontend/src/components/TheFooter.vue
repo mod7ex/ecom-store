@@ -82,7 +82,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 footer {
       color: $white;
       .footer-part {
