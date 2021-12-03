@@ -28,6 +28,7 @@ fieldset {
 
 button,
 input[type="submit"],
+input[type="number"],
 input[type="button"] {
       cursor: pointer;
       border-radius: $border-radius !important;

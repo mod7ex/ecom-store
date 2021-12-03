@@ -46,7 +46,10 @@
                               </li>
                         </ul>
                   </div>
-                  <router-link :to="{ name: 'cart' }">Cart</router-link>
+                  <router-link :to="{ name: 'cart' }">
+                        <img src="@/assets/svg/cart.svg" alt="" />
+                        <small>Cart</small>
+                  </router-link>
             </div>
       </header>
 </template>
