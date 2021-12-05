@@ -5,11 +5,16 @@ let attributeSchema = new mongoose.Schema({
             type: String,
             maxlength: 32,
       },
-      value: {
-            type: String,
-            maxlength: 256,
+      values: [
+            {
+                  type: String,
+                  maxlength: 16,
+            },
+      ],
+      visible_on_product_page: {
+            type: Boolean,
+            default: true,
       },
-      visible_on_product_page: Boolean,
 });
 
 let productSchema = new mongoose.Schema(
@@ -25,16 +30,19 @@ let productSchema = new mongoose.Schema(
                   maxLength: 512,
             },
 
-            media: {
-                  main_image: String,
-                  video: String,
+            creatives: {
+                  main_image: {
+                        type: String,
+                        required: true,
+                  },
+                  videos: [String],
                   images: [String],
             },
 
             price: {
                   regular: {
                         type: Number,
-                        required: [true, "Price is required"],
+                        required: [true, "Regular price is required"],
                   },
 
                   sale: {
@@ -65,14 +73,20 @@ let productSchema = new mongoose.Schema(
             },
 
             inventory: {
+                  stock_quantity: Number,
                   sku: {
                         type: String,
                         minlength: 8,
                         maxLength: 12,
                   },
-                  stock_quantity: Number,
-                  sold_individually: Boolean,
-                  allow_back_orders: Boolean,
+                  sold_individually: {
+                        type: Boolean,
+                        default: false,
+                  },
+                  backorders: {
+                        allow: Boolean,
+                        notify_customer: Boolean, // only true if backorders are allowed
+                  },
             },
 
             linked_products: {
@@ -86,22 +100,28 @@ let productSchema = new mongoose.Schema(
 
             attributes: [attributeSchema],
 
+            tax: {
+                  type: mongoose.SchemaTypes.ObjectId,
+                  ref: "TaxClass",
+            },
+
             purchase_note: {
+                  // sent to the customer after purshase
                   type: String,
                   maxlength: 512,
             },
 
             settings: {
-                  reviews: {
-                        enabled: Boolean,
-                        only_from_verified_owners: Boolean,
-                        show_verified_owner_label: Boolean,
-                        require_rating_to_leave_review: Boolean,
-                  },
-
                   ratings: {
                         enabled: Boolean,
-                        only_from_verified_owners: Boolean,
+                        only_from_verified_owners: Boolean, // only customers who have bough the product can leave a rating
+                  },
+
+                  reviews: {
+                        enabled: Boolean,
+                        only_from_verified_owners: Boolean, // only customers who have bough the product can leave a review
+                        show_verified_owner_label: Boolean,
+                        require_rating_to_leave_review: Boolean,
                   },
 
                   stock: {
@@ -129,9 +149,8 @@ let productSchema = new mongoose.Schema(
                                     enum: [
                                           "always_show", // ex: x items left
                                           "only_show_at_low_stock", // ex: only x items left
-                                          "never_show",
-                                          "in stock",
-                                          "Out of stock",
+                                          "in_stock",
+                                          "out_of_stock",
                                     ],
                               },
                         },
@@ -146,23 +165,18 @@ let productSchema = new mongoose.Schema(
                               },
                         },
                         dimensions: {
-                              unit: {
-                                    type: String,
-                                    enums: ["cm", "m"],
-                              },
                               length: Number,
                               width: Number,
                               height: Number,
+                              unit: {
+                                    type: String,
+                                    enums: ["cm", "m", "l"],
+                              },
                         },
                         shipping_class: {
                               type: mongoose.SchemaTypes.ObjectId,
                               ref: "ShippingClass",
                         },
-                  },
-
-                  tax: {
-                        type: String,
-                        enum: ["taxable", "shipping_only"],
                   },
             },
       },

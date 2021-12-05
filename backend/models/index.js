@@ -5,7 +5,9 @@ const Order = require("./Order");
 const User = require("./User");
 const Rating = require("./Rating");
 const Review = require("./Review");
-const ShippingClass = require("./ShippingClass");
+const ShippingClass = require("./shipping/ShippingClass");
+const ShippingMethod = require("./shipping/ShippingMethod");
+const TaxClass = require("./TaxClass");
 
 module.exports = {
       Category,
@@ -16,4 +18,6 @@ module.exports = {
       Rating,
       Review,
       ShippingClass,
+      ShippingMethod,
+      TaxClass,
 };
