@@ -1,15 +1,5 @@
 const mongoose = require("mongoose");
 
-let shipping_class_cost = new mongoose.Schema({
-      shipping_class: {
-            type: mongoose.SchemaTypes.ObjectId,
-            required: true,
-      },
-      cost: {
-            type: String, // we use placeholders like [qty], [cost] & [fee]
-      },
-});
-
 let ShippingMethodSchema = new mongoose.Schema({
       title: {
             type: String,
@@ -32,19 +22,7 @@ let ShippingMethodSchema = new mongoose.Schema({
             type: String, // we use placeholders like [qty], [cost] & [fee]
       },
 
-      no_shipping_class_cost: {
-            type: String, // we use placeholders like [qty], [cost] & [fee]
-      },
-
-      shipping_class_costs: [shipping_class_cost],
-
-      calculation_type: {
-            type: String,
-            enum: [
-                  "per_class", // charge shipping for each class individually
-                  "per_order", // charge shipping for the most expensive shippig class
-            ],
-      },
+      settings: Object,
 });
 
 module.exports = mongoose.model("ShippingMethod", ShippingMethodSchema);

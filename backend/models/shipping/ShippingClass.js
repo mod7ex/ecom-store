@@ -18,4 +18,6 @@ let ShippingClassSchema = new mongoose.Schema({
       },
 });
 
+// create by default a class called "no shipping class"
+
 module.exports = mongoose.model("ShippingClass", ShippingClassSchema);

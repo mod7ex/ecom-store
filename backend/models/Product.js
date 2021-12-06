@@ -57,6 +57,17 @@ let productSchema = new mongoose.Schema(
                   },
             },
 
+            tax_class: {
+                  type: mongoose.SchemaTypes.ObjectId,
+                  ref: "TaxClass",
+            },
+
+            purchase_note: {
+                  // sent to the customer after purshase
+                  type: String,
+                  maxlength: 512,
+            },
+
             company: {
                   type: mongoose.SchemaTypes.ObjectId,
                   ref: "Company",
@@ -89,6 +100,29 @@ let productSchema = new mongoose.Schema(
                   },
             },
 
+            shipping: {
+                  weight: {
+                        value: Number,
+                        unit: {
+                              type: String,
+                              enums: ["g", "kg"],
+                        },
+                  },
+                  dimensions: {
+                        length: Number,
+                        width: Number,
+                        height: Number,
+                        unit: {
+                              type: String,
+                              enums: ["cm", "m", "l"],
+                        },
+                  },
+                  shipping_class: {
+                        type: mongoose.SchemaTypes.ObjectId,
+                        ref: "ShippingClass",
+                  },
+            },
+
             linked_products: {
                   up_sells: [
                         { type: mongoose.SchemaTypes.ObjectId, ref: "Product" },
@@ -100,15 +134,9 @@ let productSchema = new mongoose.Schema(
 
             attributes: [attributeSchema],
 
-            tax: {
-                  type: mongoose.SchemaTypes.ObjectId,
-                  ref: "TaxClass",
-            },
-
-            purchase_note: {
-                  // sent to the customer after purshase
-                  type: String,
-                  maxlength: 512,
+            taxable: {
+                  type: Boolean,
+                  default: true,
             },
 
             settings: {
@@ -144,6 +172,7 @@ let productSchema = new mongoose.Schema(
 
                         status: {
                               show: Boolean, // either to show stock to the customer
+                              default: "only_show_at_low_stock",
                               display_format: {
                                     type: String,
                                     enum: [
@@ -153,29 +182,6 @@ let productSchema = new mongoose.Schema(
                                           "out_of_stock",
                                     ],
                               },
-                        },
-                  },
-
-                  shipping: {
-                        weight: {
-                              value: Number,
-                              unit: {
-                                    type: String,
-                                    enums: ["g", "kg"],
-                              },
-                        },
-                        dimensions: {
-                              length: Number,
-                              width: Number,
-                              height: Number,
-                              unit: {
-                                    type: String,
-                                    enums: ["cm", "m", "l"],
-                              },
-                        },
-                        shipping_class: {
-                              type: mongoose.SchemaTypes.ObjectId,
-                              ref: "ShippingClass",
                         },
                   },
             },
