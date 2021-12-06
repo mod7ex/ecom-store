@@ -108,7 +108,7 @@ export default {
                               margin-bottom: $y-margin;
                               &:first-of-type {
                                     text-decoration: line-through;
-                                    color: rgba($black-gray, 0.7);
+                                    color: $less-important-gray;
                               }
 
                               &.economy {

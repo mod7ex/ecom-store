@@ -31,6 +31,7 @@ export default {
             &.price {
                   small {
                         text-decoration: line-through;
+                        color: $less-important-gray;
                   }
             }
       }
