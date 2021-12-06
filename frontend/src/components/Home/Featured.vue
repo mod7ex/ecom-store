@@ -1,34 +1,32 @@
 <template>
-      <Block>
-            <Box>
+      <HomeSection>
+            <template v-slot:title>
                   <h2>the featured section</h2>
-                  <div class="featured-items">
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                  </div>
-            </Box>
-      </Block>
+            </template>
+
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+      </HomeSection>
 </template>
 
 <script>
 import Product from "@/components/Product.vue";
+import HomeSection from "@/layouts/HomeSection.vue";
 
 export default {
       name: "Featured",
 
       components: {
             Product,
+            HomeSection,
       },
 };
 </script>
-
-<style lang="scss">
-.featured-items {
-      font-size: large;
-      margin-top: $y-margin * 5 !important;
-      @include flex(row, flex-start, flex-start, wrap);
-}
-</style>
