@@ -1,9 +1,5 @@
 <template>
-      <HomeSection>
-            <template v-slot:title>
-                  <h2>Category name</h2>
-            </template>
-
+      <Box id="search-listing">
             <Product />
             <Product />
             <Product />
@@ -14,19 +10,27 @@
             <Product />
             <Product />
             <Product />
-      </HomeSection>
+            <Product />
+            <Product />
+            <Product />
+            <Product />
+      </Box>
 </template>
 
 <script>
 import Product from "@/components/Product.vue";
-import HomeSection from "@/layouts/HomeSection.vue";
 
 export default {
-      name: "Category",
+      name: "Listing",
 
       components: {
             Product,
-            HomeSection,
       },
 };
 </script>
+
+<style lang="scss">
+#search-listing {
+      @include flex(row, flex-start, flex-start, wrap);
+}
+</style>
