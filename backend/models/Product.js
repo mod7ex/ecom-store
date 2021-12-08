@@ -105,7 +105,7 @@ let productSchema = new mongoose.Schema(
                         value: Number,
                         unit: {
                               type: String,
-                              enums: ["g", "kg"],
+                              enum: ["kg", "g", "lbs", "oz"],
                         },
                   },
                   dimensions: {
@@ -114,7 +114,7 @@ let productSchema = new mongoose.Schema(
                         height: Number,
                         unit: {
                               type: String,
-                              enums: ["cm", "m", "l"],
+                              enum: ["m", "cm", "mm", "in", "yd"],
                         },
                   },
                   shipping_class: {
@@ -141,20 +141,36 @@ let productSchema = new mongoose.Schema(
 
             settings: {
                   ratings: {
-                        enabled: Boolean,
+                        enabled: {
+                              type: Boolean,
+                              default: true,
+                        },
                         only_from_verified_owners: Boolean, // only customers who have bough the product can leave a rating
                   },
 
                   reviews: {
                         enabled: Boolean,
-                        only_from_verified_owners: Boolean, // only customers who have bough the product can leave a review
-                        show_verified_owner_label: Boolean,
-                        require_rating_to_leave_review: Boolean,
+                        only_from_verified_owners: {
+                              // only customers who have bough the product can leave a review
+                              type: Boolean,
+                              default: true,
+                        },
+                        show_verified_owner_label: {
+                              type: Boolean,
+                              default: true,
+                        },
+                        require_rating_to_leave_review: {
+                              type: Boolean,
+                              default: true,
+                        },
                   },
 
                   stock: {
                         low_stock: {
-                              notify: Boolean,
+                              notify: {
+                                    type: Boolean,
+                                    default: false,
+                              },
                               threshold: {
                                     type: Number,
                                     default: 2,
@@ -162,8 +178,15 @@ let productSchema = new mongoose.Schema(
                         },
 
                         out_of_stock: {
-                              notify: Boolean,
-                              hide: Boolean, // hide the product from listing
+                              notify: {
+                                    type: Boolean,
+                                    default: false,
+                              },
+                              hide: {
+                                    // hide the product from listing
+                                    type: Boolean,
+                                    default: false,
+                              },
                               threshold: {
                                     type: Number,
                                     default: 0,
@@ -171,8 +194,11 @@ let productSchema = new mongoose.Schema(
                         },
 
                         status: {
-                              show: Boolean, // either to show stock to the customer
-                              default: "only_show_at_low_stock",
+                              show: {
+                                    // either to show stock to the customer
+                                    type: Boolean,
+                                    default: true,
+                              },
                               display_format: {
                                     type: String,
                                     enum: [
@@ -181,7 +207,14 @@ let productSchema = new mongoose.Schema(
                                           "in_stock",
                                           "out_of_stock",
                                     ],
+                                    default: "only_show_at_low_stock",
                               },
+                        },
+
+                        hold_stock: {
+                              // when this limit is reached; pending orders are cancelled
+                              type: Number,
+                              default: 10080,
                         },
                   },
             },
