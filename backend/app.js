@@ -17,9 +17,26 @@ const {
       ratingsRouter,
 } = require("./routes");
 
+// security packages
+const helmet = require("helmet");
+const cors = require("cors");
+const xss = require("xss-clean");
+const rateLimit = require("express-rate-limit");
+
 const app = express();
 
 const port = process.env.PORT || 3000;
+
+// security middlewares
+app.set("trust proxy", 1);
+const limiter = rateLimit({
+      windowMs: 15 * 60 * 1000, // 15 minutes
+      max: 100, // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+app.use(helmet());
+app.use(cors());
+app.use(xss());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
