@@ -1,12 +1,18 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+
+import * as features from "./modules/features";
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+      // strict: process.env.NODE_ENV !== "production",
+      strict: true,
+
+      state: {},
+
+      getters: {},
+
+      mutations: {},
+
+      actions: {},
+
+      modules: { features },
+});

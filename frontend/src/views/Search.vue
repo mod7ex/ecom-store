@@ -31,7 +31,8 @@ export default {
 <style lang="scss">
 #search-area {
       display: grid;
-      grid-template-columns: 1fr 2.5fr;
+      // grid-template-columns: 1fr 2.5fr;
+      grid-template-columns: 1fr 3.06fr;
       grid-template-rows: 1fr;
       grid-column-gap: 0px;
       grid-row-gap: 0px;

@@ -1,5 +1,8 @@
 <template>
-      <Box id="search-listing">
+      <Box
+            id="search-listing"
+            :class="{ list: display_mode, grid: !display_mode }"
+      >
             <Product />
             <Product />
             <Product />
@@ -19,6 +22,7 @@
 
 <script>
 import Product from "@/components/Product.vue";
+import { mapGetters } from "vuex";
 
 export default {
       name: "Listing",
@@ -26,11 +30,27 @@ export default {
       components: {
             Product,
       },
+
+      computed: {
+            ...mapGetters({
+                  display_mode: "features/display_mode",
+            }),
+      },
+
+      watch: {
+            display_mode: (val) => {
+                  console.log(val);
+            },
+      },
 };
 </script>
 
 <style lang="scss">
 #search-listing {
       @include flex(row, flex-start, flex-start, wrap);
+
+      &.list {
+            @include flex(column, flex-start, stretch, nowrap);
+      }
 }
 </style>
