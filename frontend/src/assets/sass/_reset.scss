@@ -1,0 +1,55 @@
+html {
+      scroll-behavior: smooth;
+}
+
+* {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+}
+
+a {
+      text-decoration: none;
+      display: inline-block;
+      color: black;
+}
+
+ul {
+      list-style: none;
+}
+
+img {
+      max-width: 95vw !important;
+
+      &.img-logo {
+            height: 37px;
+      }
+}
+
+fieldset {
+      border: none;
+}
+
+button,
+input[type="submit"],
+input[type="number"],
+input[type="button"] {
+      cursor: pointer;
+      border-radius: $border-radius !important;
+      // background-color: transparent;
+}
+
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="text"] {
+      border: 1px solid;
+      border-radius: $border-radius;
+      border-color: transparent;
+      padding: $y-padding * 2 $x-padding !important;
+      @include shadow();
+      &:focus {
+            outline: none;
+            border-color: rgba($black-gray, 0.7);
+      }
+}

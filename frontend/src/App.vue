@@ -1,22 +1,33 @@
 <template>
-      <TopBanner />
-      <Header />
+      <TheTopAdsBanner />
+      <TheHeader />
+      <div id="content">
+            <router-view />
+      </div>
+      <TheFooter />
 </template>
 
 <script>
-import TopBanner from "@/components/TopBanner.vue";
-import Header from "@/components/Header.vue";
+import TheTopAdsBanner from "@/components/TheTopAdsBanner.vue";
+import TheHeader from "@/components/TheHeader.vue";
+import TheFooter from "@/components/TheFooter.vue";
 
 export default {
       components: {
-            TopBanner,
-            Header,
+            TheTopAdsBanner,
+            TheHeader,
+            TheFooter,
       },
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/style/_reset.scss";
-@import "@/assets/style/_variables.scss";
-@import "@/assets/style/_mixins.scss";
+#app {
+      min-height: 100vh;
+      background-color: rgba($white-gray, 0.3);
+      #content {
+            @include center();
+            margin-bottom: $y-margin * 13 !important;
+      }
+}
 </style>

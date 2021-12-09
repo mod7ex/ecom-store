@@ -1,0 +1,35 @@
+@import "variables";
+@import "functions";
+@import "mixins";
+@import "reset";
+
+.form-field {
+      margin-bottom: $y-margin * 7 !important;
+
+      input[type="search"],
+      input[type="password"],
+      input[type="email"],
+      input[type="text"] {
+            margin-top: $y-margin * 2 !important;
+            display: block;
+            width: 100%;
+      }
+}
+
+.form {
+      @include center($basic-width);
+      @extend .form-field;
+}
+
+.btn {
+      background-color: $brand-color;
+      border: none;
+      color: white;
+      padding: $y-padding * 2 0 !important;
+      min-width: $first-width * 2.3;
+      font-weight: bold;
+
+      &:hover {
+            background-color: rgba($brand-color, 0.7);
+      }
+}

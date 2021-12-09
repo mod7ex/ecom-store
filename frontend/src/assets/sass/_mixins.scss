@@ -1,0 +1,25 @@
+@mixin flex(
+      $direction: row,
+      $justify: space-between,
+      $align: center,
+      $wrap: nowrap
+) {
+      display: flex;
+      flex-direction: $direction;
+      justify-content: $justify;
+      align-items: $align;
+      flex-wrap: $wrap;
+}
+
+@mixin shadow($color: $black-gray, $a: 1px) {
+      box-shadow: $a $a 11px 0 rgba($color, 0.3);
+}
+
+@mixin center($width: $screen, $t-margin: 0, $b-margin: 0) {
+      max-width: $width;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-top: $t-margin;
+      margin-bottom: $b-margin;
+      // margin: $t-margin auto $b-margin auto !important;
+}
