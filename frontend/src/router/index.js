@@ -67,6 +67,15 @@ const routes = [
       },
 
       {
+            path: "/singleproduct",
+            name: "singleproduct",
+            component: () => import("../views/SingleProduct.vue"),
+            meta: {
+                  title: "Single Product",
+            },
+      },
+
+      {
             path: "/about",
             name: "about",
             component: () => import("../views/About.vue"),
