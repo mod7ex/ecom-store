@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const faker = require("faker");
 
 let attributeSchema = new mongoose.Schema({
       name: {
@@ -35,8 +36,23 @@ let productSchema = new mongoose.Schema(
                         type: String,
                         required: true,
                   },
-                  videos: [String],
                   images: [String],
+                  videos: [String],
+            },
+
+            company: {
+                  type: mongoose.SchemaTypes.ObjectId,
+                  ref: "Company",
+            },
+
+            category: {
+                  type: mongoose.SchemaTypes.ObjectId,
+                  ref: "Category",
+            },
+
+            featured: {
+                  type: Boolean,
+                  default: false,
             },
 
             price: {
@@ -57,38 +73,34 @@ let productSchema = new mongoose.Schema(
                   },
             },
 
-            tax_class: {
-                  type: mongoose.SchemaTypes.ObjectId,
-                  ref: "TaxClass",
-            },
-
             purchase_note: {
                   // sent to the customer after purshase
                   type: String,
                   maxlength: 512,
             },
 
-            company: {
-                  type: mongoose.SchemaTypes.ObjectId,
-                  ref: "Company",
-            },
+            tax: {
+                  taxable: {
+                        type: Boolean,
+                        default: true,
+                  },
 
-            category: {
-                  type: mongoose.SchemaTypes.ObjectId,
-                  ref: "Category",
-            },
-
-            featured: {
-                  type: Boolean,
-                  default: false,
+                  tax_class: {
+                        type: mongoose.SchemaTypes.ObjectId,
+                        ref: "TaxClass",
+                  },
             },
 
             inventory: {
-                  stock_quantity: Number,
+                  stock_quantity: {
+                        type: Number,
+                        default: faker.datatype.number(100),
+                  },
                   sku: {
                         type: String,
                         minlength: 8,
                         maxLength: 12,
+                        default: faker.datatype.string(10),
                   },
                   sold_individually: {
                         type: Boolean,
@@ -134,71 +146,33 @@ let productSchema = new mongoose.Schema(
 
             attributes: [attributeSchema],
 
-            taxable: {
-                  type: Boolean,
-                  default: true,
-            },
-
             settings: {
                   ratings: {
-                        enabled: {
-                              type: Boolean,
-                              default: true,
-                        },
+                        enabled: Boolean,
                         only_from_verified_owners: Boolean, // only customers who have bough the product can leave a rating
                   },
 
                   reviews: {
                         enabled: Boolean,
-                        only_from_verified_owners: {
-                              // only customers who have bough the product can leave a review
-                              type: Boolean,
-                              default: true,
-                        },
-                        show_verified_owner_label: {
-                              type: Boolean,
-                              default: true,
-                        },
-                        require_rating_to_leave_review: {
-                              type: Boolean,
-                              default: true,
-                        },
+                        only_from_verified_owners: Boolean, // only customers who have bough the product can leave a review
+                        show_verified_owner_label: Boolean,
+                        require_rating_to_leave_review: Boolean,
                   },
 
                   stock: {
                         low_stock: {
-                              notify: {
-                                    type: Boolean,
-                                    default: false,
-                              },
-                              threshold: {
-                                    type: Number,
-                                    default: 2,
-                              },
+                              notify: Boolean,
+                              threshold: Number,
                         },
 
                         out_of_stock: {
-                              notify: {
-                                    type: Boolean,
-                                    default: false,
-                              },
-                              hide: {
-                                    // hide the product from listing
-                                    type: Boolean,
-                                    default: false,
-                              },
-                              threshold: {
-                                    type: Number,
-                                    default: 0,
-                              },
+                              notify: Boolean,
+                              hide: Boolean, // hide the product from listing
+                              threshold: Number,
                         },
 
                         status: {
-                              show: {
-                                    // either to show stock to the customer
-                                    type: Boolean,
-                                    default: true,
-                              },
+                              show: Boolean, // either to show stock to the customer
                               display_format: {
                                     type: String,
                                     enum: [
@@ -207,15 +181,11 @@ let productSchema = new mongoose.Schema(
                                           "in_stock",
                                           "out_of_stock",
                                     ],
-                                    default: "only_show_at_low_stock",
+                                    // default: "only_show_at_low_stock",
                               },
                         },
 
-                        hold_stock: {
-                              // when this limit is reached; pending orders are cancelled
-                              type: Number,
-                              default: 10080,
-                        },
+                        hold_stock: Number, // when this limit is reached; pending orders are cancelled // default: 10080,
                   },
             },
       },

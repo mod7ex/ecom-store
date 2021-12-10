@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 let SettingsSchema = new mongoose.Schema({
       general: {
             base_location: {
+                  // store location
                   type: String,
             },
 
@@ -94,9 +95,10 @@ let SettingsSchema = new mongoose.Schema({
                         default: false,
                   },
                   calculate_coupon_discount_squentially: {
+                        // if true apply the first the second ... if false combine them
                         type: Boolean,
                         default: false,
-                  }, // if true apply the first the second ... if false combine them
+                  },
             },
 
             guest_checkout_anabled: {
@@ -125,7 +127,7 @@ let SettingsSchema = new mongoose.Schema({
             endpoints: {},
       },
 
-      Products: {
+      Product: {
             measurements: {
                   weight_unit: {
                         type: String,
@@ -138,17 +140,30 @@ let SettingsSchema = new mongoose.Schema({
                   },
             },
 
-            default_sorting: {
-                  type: String,
-                  enum: [
-                        "custom_ordering_plus_name",
-                        "popularity_sales",
-                        "rating",
-                        "recent_added",
-                        "price_asc",
-                        "price_desc",
-                  ],
-                  default: "custom_ordering_plus_name",
+            sorting: {
+                  options: {
+                        type: [String],
+                        default: [
+                              "custom_ordering_plus_name",
+                              "popularity_sales",
+                              "rating",
+                              "recent_added",
+                              "price_asc",
+                              "price_desc",
+                        ],
+                  },
+                  default: {
+                        type: String,
+                        enum: [
+                              "custom_ordering_plus_name",
+                              "popularity_sales",
+                              "rating",
+                              "recent_added",
+                              "price_asc",
+                              "price_desc",
+                        ],
+                        default: "custom_ordering_plus_name",
+                  },
             },
 
             add_to_cart_behaviour: {
@@ -178,6 +193,93 @@ let SettingsSchema = new mongoose.Schema({
             notification_recipient: {
                   type: String,
                   default: "mouradface98@mail.com",
+            },
+
+            default_product_settings: {
+                  ratings: {
+                        enabled: {
+                              type: Boolean,
+                              default: true,
+                        },
+                        only_from_verified_owners: {
+                              // only customers who have bough the product can leave a rating
+                              type: Boolean,
+                              default: true,
+                        },
+                  },
+
+                  reviews: {
+                        enabled: {
+                              type: Boolean,
+                              default: true,
+                        },
+                        only_from_verified_owners: {
+                              // only customers who have bough the product can leave a review
+                              type: Boolean,
+                              default: true,
+                        },
+                        show_verified_owner_label: {
+                              type: Boolean,
+                              default: true,
+                        },
+                        require_rating_to_leave_review: {
+                              type: Boolean,
+                              default: true,
+                        },
+                  },
+
+                  stock: {
+                        low_stock: {
+                              notify: {
+                                    type: Boolean,
+                                    default: true,
+                              },
+                              threshold: {
+                                    type: Number,
+                                    default: 2,
+                              },
+                        },
+
+                        out_of_stock: {
+                              notify: {
+                                    type: Boolean,
+                                    default: true,
+                              },
+                              hide: {
+                                    // hide the product from listing
+                                    type: Boolean,
+                                    default: true,
+                              },
+                              threshold: {
+                                    type: Number,
+                                    default: 2,
+                              },
+                        },
+
+                        status: {
+                              show: {
+                                    // either to show stock to the customer
+                                    type: Boolean,
+                                    default: true,
+                              },
+                              display_format: {
+                                    type: String,
+                                    enum: [
+                                          "always_show", // ex: x items left
+                                          "only_show_at_low_stock", // ex: only x items left
+                                          "in_stock",
+                                          "out_of_stock",
+                                    ],
+                                    default: "only_show_at_low_stock",
+                              },
+                        },
+
+                        hold_stock: {
+                              // when this limit is reached; pending orders are cancelled
+                              type: Number,
+                              default: 10080,
+                        },
+                  },
             },
       },
 });
