@@ -3,7 +3,6 @@ const usersRouter = require("./users");
 const productsRouter = require("./products");
 const categoriesRouter = require("./categories");
 const companiesRouter = require("./companies");
-const ratingsRouter = require("./ratings");
 
 module.exports = {
       authRouter,
@@ -11,5 +10,4 @@ module.exports = {
       productsRouter,
       categoriesRouter,
       companiesRouter,
-      ratingsRouter,
 };

@@ -3,7 +3,6 @@ const Product = require("./Product");
 const Company = require("./Company");
 const Order = require("./Order");
 const User = require("./User");
-const Rating = require("./Rating");
 const Review = require("./Review");
 const ShippingClass = require("./shipping/ShippingClass");
 const ShippingMethod = require("./shipping/ShippingMethod");
@@ -15,7 +14,6 @@ module.exports = {
       Company,
       Order,
       User,
-      Rating,
       Review,
       ShippingClass,
       ShippingMethod,

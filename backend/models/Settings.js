@@ -1,18 +1,22 @@
 const mongoose = require("mongoose");
+let coutries = require("../helpers/i18n/countries.json");
 
 let SettingsSchema = new mongoose.Schema({
       general: {
             base_location: {
                   // store location
                   type: String,
+                  default: "MA",
             },
 
             selling_locations: {
-                  type: [String], // empty array or property doesn't exist means all countries
+                  type: [String],
+                  default: coutries,
             },
 
             shipping_locations: {
                   type: [String],
+                  default: coutries,
             },
 
             default_customer_location: {
@@ -132,11 +136,13 @@ let SettingsSchema = new mongoose.Schema({
                   weight_unit: {
                         type: String,
                         enum: ["kg", "g", "lbs", "oz"],
+                        default: "kg",
                   },
 
                   dimensions_unit: {
                         type: String,
                         enum: ["m", "cm", "mm", "in", "yd"],
+                        default: "cm",
                   },
             },
 

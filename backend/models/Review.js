@@ -19,6 +19,12 @@ let reviewSchema = new mongoose.Schema(
                   maxlength: 512,
                   required: [true, "Review value is required"],
             },
+
+            rating: {
+                  type: Number,
+                  max: 5,
+                  min: 0,
+            },
       },
 
       { timestamps: true }

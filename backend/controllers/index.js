@@ -31,14 +31,6 @@ const {
       deleteCompany,
 } = require("./companies");
 
-const {
-      getAllRatings,
-      createRating,
-      getRating,
-      updateRating,
-      deleteRating,
-} = require("./ratings");
-
 const { register, login, logout } = require("./auth");
 
 module.exports = {
@@ -70,10 +62,4 @@ module.exports = {
       getCompany,
       updateCompany,
       deleteCompany,
-
-      getAllRatings,
-      createRating,
-      getRating,
-      updateRating,
-      deleteRating,
 };
