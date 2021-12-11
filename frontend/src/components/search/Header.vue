@@ -16,6 +16,7 @@
                   <small>132 result</small>
                   <div class="display-mode">
                         <svg
+                              :class="{ 'active-mode': display_mode }"
                               @click="change_display_mode()"
                               xmlns="http://www.w3.org/2000/svg"
                               width="18"
@@ -28,6 +29,7 @@
                         </svg>
 
                         <svg
+                              :class="{ 'active-mode': !display_mode }"
                               @click="change_display_mode(false)"
                               xmlns="http://www.w3.org/2000/svg"
                               width="18"
@@ -44,10 +46,16 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
       name: "Header",
+
+      computed: {
+            ...mapGetters({
+                  display_mode: "features/display_mode",
+            }),
+      },
 
       methods: {
             ...mapActions({
@@ -87,7 +95,8 @@ export default {
                         margin: 0 $x-margin;
                         cursor: pointer;
 
-                        &:hover {
+                        &:hover,
+                        &.active-mode {
                               fill: $brand-color;
                         }
                   }

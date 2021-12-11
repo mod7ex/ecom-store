@@ -22,7 +22,7 @@
 
 <script>
 import Product from "@/components/Product.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
       name: "Listing",
@@ -31,17 +31,27 @@ export default {
             Product,
       },
 
+      methods: {
+            ...mapActions({
+                  prepare_display_mode: "features/prepare_display_mode",
+            }),
+      },
+
       computed: {
             ...mapGetters({
                   display_mode: "features/display_mode",
             }),
       },
 
-      watch: {
-            display_mode: (val) => {
-                  console.log(val);
-            },
+      beforeMount() {
+            this.prepare_display_mode();
       },
+
+      // watch: {
+      //       display_mode: (val) => {
+      //             console.log(val);
+      //       },
+      // },
 };
 </script>
 

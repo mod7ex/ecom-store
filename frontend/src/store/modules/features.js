@@ -1,7 +1,9 @@
+import { set_cookie, get_cookie } from "@/helpers/helper_functions";
+
 export const namespaced = true;
 
 export const state = {
-      display_mode: true,
+      display_mode: false,
 };
 
 export const mutations = {
@@ -11,8 +13,15 @@ export const mutations = {
 };
 
 export const actions = {
+      prepare_display_mode({ commit }) {
+            let mode = get_cookie("display_mode");
+
+            commit("CHANGE_DISPLAY_MODE", mode === "true");
+      },
+
       change_display_mode({ commit }, mode = true) {
             commit("CHANGE_DISPLAY_MODE", mode);
+            set_cookie("display_mode", mode);
       },
 };
 
