@@ -31,6 +31,17 @@ const {
       deleteCompany,
 } = require("./companies");
 
+const {
+      getAllReviews,
+      getAllProductReviews,
+      createReview,
+      getReview,
+      updateReview,
+      deleteReview,
+} = require("./reviews");
+
+const { getSettings, updateSettings } = require("./settings");
+
 const { register, login, logout } = require("./auth");
 
 module.exports = {
@@ -62,4 +73,14 @@ module.exports = {
       getCompany,
       updateCompany,
       deleteCompany,
+
+      getAllReviews,
+      getAllProductReviews,
+      createReview,
+      getReview,
+      updateReview,
+      deleteReview,
+
+      getSettings,
+      updateSettings,
 };

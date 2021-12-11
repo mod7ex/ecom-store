@@ -202,18 +202,6 @@ let SettingsSchema = new mongoose.Schema({
             },
 
             default_product_settings: {
-                  ratings: {
-                        enabled: {
-                              type: Boolean,
-                              default: true,
-                        },
-                        only_from_verified_owners: {
-                              // only customers who have bough the product can leave a rating
-                              type: Boolean,
-                              default: true,
-                        },
-                  },
-
                   reviews: {
                         enabled: {
                               type: Boolean,
@@ -231,6 +219,12 @@ let SettingsSchema = new mongoose.Schema({
                         require_rating_to_leave_review: {
                               type: Boolean,
                               default: true,
+                        },
+                        ratings: {
+                              enabled: {
+                                    type: Boolean,
+                                    default: true,
+                              },
                         },
                   },
 

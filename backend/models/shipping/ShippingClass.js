@@ -20,4 +20,10 @@ let ShippingClassSchema = new mongoose.Schema({
 
 // create by default a class called "no shipping class"
 
+ShippingClassSchema.pre("save", function () {
+      if (!this.slug) {
+            this.slug = this.name.split(" ").join("_");
+      }
+});
+
 module.exports = mongoose.model("ShippingClass", ShippingClassSchema);

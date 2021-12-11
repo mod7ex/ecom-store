@@ -147,16 +147,14 @@ let productSchema = new mongoose.Schema(
             attributes: [attributeSchema],
 
             settings: {
-                  ratings: {
-                        enabled: Boolean,
-                        only_from_verified_owners: Boolean, // only customers who have bough the product can leave a rating
-                  },
-
                   reviews: {
                         enabled: Boolean,
                         only_from_verified_owners: Boolean, // only customers who have bough the product can leave a review
                         show_verified_owner_label: Boolean,
                         require_rating_to_leave_review: Boolean,
+                        ratings: {
+                              enabled: Boolean,
+                        },
                   },
 
                   stock: {

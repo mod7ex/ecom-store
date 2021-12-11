@@ -14,13 +14,13 @@ let reviewSchema = new mongoose.Schema(
                   ref: "User",
             },
 
-            review: {
+            review_content: {
                   type: String,
                   maxlength: 512,
                   required: [true, "Review value is required"],
             },
 
-            rating: {
+            review_rating: {
                   type: Number,
                   max: 5,
                   min: 0,
